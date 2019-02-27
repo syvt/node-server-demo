@@ -17,17 +17,44 @@ const returnForm = (req, res, next) =>{
       ,{ 
           type: "button"
         , options: [
-          { name: "LOGIN", next: "CONTINUE" , url: "http://localhost:8080/auth/login" }
+          { name: "LOGIN", next: "CALLBACK" , url: "http://localhost:8080/auth/login" }
         ]
       }]
 };
   
-  console.log('client gui len bien so',req.paramS);
+  //console.log('client gui len bien so',req.paramS);
 
-  if (req.paramS.form==="login")
+
+  let baoduongForm = {
+    title: "Phiếu bảo dưỡng"
+    , items: [
+      {name: "PHIẾU CHẤM ĐIỂM", type: "title"}
+      ,{name: "Siteid:DNCL0999 Quý: 4 Năm: 2017", type: "title"}
+      ,{name: "I. PHÒNG MÁY", type: "title"}
+      ,{key: "I_1", name: "1. Vị trí phòng máy...", type: "text", hint: "Nhập điểm", validators:  [{ required: true, min: 1, max: 2, pattern: "^[0-9]*$" }]}
+      ,{key: "I_2", name: "2. Lỗ phi đơ...", type: "text", hint: "Nhập điểm", validators:  [{ required: true, min: 1, max: 2, pattern: "^[0-9]*$" }]}
+      ,{key: "I_3", name: "3. Lỗ phi đơ...", type: "select", value: 5, options: [{ name: "1 điểm", value: 1 }, { name: "2 điểm", value: 2 }, { name: "3 điểm", value: 3 }, { name: "4 điểm", value: 4 }, { name: "5 điểm", value: 5 }] }
+      ,{key: "I_4", name: "4. Chon điểm theo thanh trượt...",type: "range", icon:"contrast", value: 5, min: 0, max: 10 }
+      ,{key: "I_5", name: "5. Cho điểm Đúng Sai...", icon: "plane", type: "toggle"}
+      ,{ 
+        type: "button"
+      , options: [
+        { name: "Chấm điểm", next: "CALLBACK" , url: "http://localhost:8080/auth/result-baoduong" }
+      ]
+    }
+    ]
+  }
+
+
+
+  if (req.paramS.formm==="login")
   {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(loginForm));
+  } else if (req.paramS.form==="baoduong")
+  {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(baoduongForm));
   } else {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({form:'khong xac dinh'}));
