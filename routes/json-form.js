@@ -6,5 +6,6 @@ const tokenHandler = require('../utils/token-handler');
 
 //cap key khi co token xac thuc bang isdn
 router.get('/form', jsonHandler.returnForm);
+router.get('/mnp', jsonHandler.prefixMNP);
 
 module.exports = router;

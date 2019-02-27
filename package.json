@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "convert-excel-to-json": "^1.6.1",
     "dddos": "^0.1.2",
     "express": "^4.16.4",
     "formidable": "^1.2.1",
@@ -17,6 +18,8 @@
     "os": "^0.1.1",
     "path": "^0.12.7",
     "request": "^2.88.0",
-    "url": "^0.11.0"
+    "sqlite3": "^4.0.6",
+    "url": "^0.11.0",
+    "xlsx-to-json-lc": "^0.5.0"
   }
 }

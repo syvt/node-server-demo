@@ -6,6 +6,21 @@ const systempath = require('path');
 const mime = require('mime-types');
 const fs = require('fs');
 
+const db_service = require("../db/sqlite3/excel-sqlite-service");
+
+const prefixMNP = (req,res,next) =>{
+      db_service.handler.db().getRsts('select * from mnp')
+    .then(data=>{
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(data));
+    })
+    .catch(err=>{
+      res.writeHead(403, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(err));
+    });
+
+}
+
 const returnForm = (req, res, next) =>{
 
   let loginForm = {
@@ -63,6 +78,8 @@ const returnForm = (req, res, next) =>{
 
 
 
+
 module.exports = {
-    returnForm: returnForm
+    returnForm: returnForm,
+    prefixMNP: prefixMNP
 };
