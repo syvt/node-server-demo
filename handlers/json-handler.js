@@ -62,7 +62,7 @@ const returnForm = (req, res, next) =>{
 
 
 
-  if (req.paramS.formm==="login")
+  if (req.paramS.f==="login")
   {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(loginForm));

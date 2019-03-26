@@ -30,8 +30,8 @@ class CorsHandler {
      */
     cors(req, res, next) {
 
-       console.log('*** req.method',req.method);
-       console.log('*** req.url',req.url);
+       //console.log('*** req.method',req.method);
+       //console.log('*** req.url',req.url);
        //console.log('*** req.headers',req.headers);
        //console.log('*** req.url_parse',url.parse(req.url, true, false));
       

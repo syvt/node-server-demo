@@ -15,14 +15,11 @@ function main(isHttp, isHttps) {
   const cors = require('./handlers/cors-handler');
   app.use(cors.CorsHandler.cors);
   
-  //tra cac form dong cho client
-  const jsonForm = require('./routes/json-form');
-  app.use('/json-form', jsonForm);
 
+  const restfullOracle = require('./routes/restful-oracle');
+  app.use('/oracle',restfullOracle);
 
-  //server xac thuc
-  const authRoute = require('./routes/local-auth');
-  app.use('/auth', authRoute);
+  
 
   //ham tra loi cac dia chi khong co
   //The 404 Route (ALWAYS Keep this as the last route)

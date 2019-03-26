@@ -149,6 +149,18 @@ const getMatrix = (maskMatrix, data, point)=>{
     return matrix;
 }
 
+/**
+ * chuyen doi chuoi null, undefined = ''
+ * @param {*} obj 
+ */
+const emptyNullValues = (obj)=>{
+    return JSON.parse(
+        JSON.stringify(obj
+                       , function (key, value) {return (value === undefined||value === null) ? "" : value}
+                       )
+        );
+}
+
 module.exports = {
     createObjectKey: createObjectKey,
     convertSqlFromJson: convertSqlFromJson,
@@ -157,4 +169,5 @@ module.exports = {
     getMatrix : getMatrix, //tao ma tran in
     compare2Objects:isEquikeylent, //so sanh 2 object
     createTree: createTree,  //tao tree -->children
+    emptyNullValues: emptyNullValues
 };
